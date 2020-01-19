@@ -7,33 +7,7 @@
     <meta name="viewport" content="width=device-width">
 
     <title>Silly story generator</title>
-
-    <style>
-        body {
-            font-family: helvetica, sans-serif;
-            width: 350px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        div {
-            padding-bottom: 20px;
-        }
-
-        input[type="text"] {
-            padding: 5px;
-            width: 150px;
-        }
-
-        p {
-            background: rgb(241, 241, 241);
-            color: rgb(0, 0, 0);
-            padding: 10px;
-            visibility: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -50,55 +24,23 @@
     </div>
     <p class="story"></p>
 
+    <br>
+    <hr>
 
-    <script>
-        const customName = document.getElementById('customname');
-        const randomize = document.querySelector('.randomize');
-        const story = document.querySelector('.story');
+    <h1>Image gallery example</h1>
+    <button class="transp dark">Darken</button>
+    <div class="full-img">
+        <img class="displayed-img" src="images/pic1.jpg">
+        <div class="overlay"></div>
 
-        function randomValueFromArray(array) {
-            const random = Math.floor(Math.random() * array.length); // create random number between 0 1 2 for array index
-            return array[random];
-        }
+    </div>
 
-        let storyText =
-            'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
-        let insertX = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
-        let insertY = ['the soup kitchen', 'Disneyland', 'the White House'];
-        let insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk',
-            'turned into a slug and crawled away'
-        ];
+    <div class="thumb-bar">
 
-        randomize.addEventListener('click', result);
 
-        function result() {
-            let newStory = storyText;
+    </div>
 
-            let xItem = randomValueFromArray(insertX); // take and get the random number from randomValueFromArray to imsertX index array
-            let yItem = randomValueFromArray(insertY);
-            let zItem = randomValueFromArray(insertZ);
-
-            newStory = newStory.replace(':insertx:', xItem); // change :insertx: value to the value from insertX random index array
-            newStory = newStory.replace(':insertx:', xItem);
-            newStory = newStory.replace(':inserty:', yItem);
-            newStory = newStory.replace(':insertz:', zItem);
-
-            if (customName.value !== '') { // if the input field is INPUTTED by a text value
-                const name = customName.value;
-                newStory = newStory.replace('Bob', name); // change Bob value to the result of inputted text value before
-            }
-
-            if (document.getElementById("uk").checked) { // if the uk radio button is checked
-                const weight = Math.round(300 * 0.0714286) + ' stone';
-                const temperature = Math.round((94 - 32) * 5 / 9) + ' centigrade';
-                newStory = newStory.replace('94 fahrenheit', temperature); // change 94 fahrenheit inside storyText
-                newStory = newStory.replace('300 pounds', weight);
-            }
-
-            story.textContent = newStory;
-            story.style.visibility = 'visible';
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
